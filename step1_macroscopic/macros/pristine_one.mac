@@ -1,0 +1,6 @@
+# One energy of pristine_scan.mac; aliases E, N and ESPREAD come from the caller
+/control/multiply SIGMA {E} {ESPREAD}
+/gps/ene/mono {E} MeV
+/gps/ene/sigma {SIGMA} MeV
+/rbe/output/prefix output/pristine_{E}MeV
+/run/beamOn {N}

@@ -1,0 +1,31 @@
+# Series of pristine Bragg peaks (one run per energy), e.g. as the basis
+# for SOBP weight optimisation with analysis/sobp_weights.py
+#   ./protonDepth -m pristine_scan.mac -t 8
+
+/control/verbose 1
+/run/verbose 1
+
+/rbe/det/depth 40 cm
+/rbe/det/width 40 cm
+/rbe/det/maxStep 0.5 mm
+
+/run/setCut 0.1 mm
+/run/initialize
+
+/gps/particle proton
+/gps/pos/type Beam
+/gps/pos/centre 0 0 -1 cm
+/gps/pos/sigma_x 3 mm
+/gps/pos/sigma_y 3 mm
+/gps/direction 0 0 1
+/gps/ene/type Gauss
+
+/rbe/score/depthBins 800
+/rbe/score/spectrumDepthBins 200
+
+# Primaries per energy and relative energy spread (sigma / E)
+/control/alias N 100000
+/control/alias ESPREAD 0.005
+
+/run/printProgress 10000
+/control/foreach pristine_one.mac E "70 100 130 150 180 200 230"
