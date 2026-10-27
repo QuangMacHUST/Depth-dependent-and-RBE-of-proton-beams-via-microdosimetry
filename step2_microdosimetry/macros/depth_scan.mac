@@ -1,0 +1,26 @@
+# y spectra along the Bragg curve: one run per depth, all from the same
+# step-1 output. Collect the results with analysis/collect_depth.py.
+#   ./protonMicro -m depth_scan.mac -t 8
+
+/control/verbose 1
+/run/verbose 1
+
+/micro/det/buildup 3 um
+/micro/det/zone 2 um
+/micro/det/exit 1 um
+/micro/det/halfWidth 5 um
+
+/run/initialize
+
+/micro/source/mode spectrum
+/micro/source/spectrumPrefix ../../step1_macroscopic/build/output/pristine_150MeV
+/micro/source/bias alpha 20
+/micro/source/bias deuteron 5
+/micro/source/bias triton 5
+/micro/source/bias he3 5
+/micro/score/siteDiameter 1 um
+
+# Depths in mm (plateau, proximal peak, peak, distal fall-off for 150 MeV)
+/control/alias N 20000
+/run/printProgress 5000
+/control/foreach depth_one.mac Z "20 60 100 130 145 150 153 155 157 159"

@@ -1,0 +1,31 @@
+# Monoenergetic primary (validation / reference spectra)
+#   ./protonMicro -m mono.mac [-p dna_opt6] [-t 8]
+
+/control/verbose 1
+/run/verbose 1
+
+# --- Track segment (before /run/initialize) ---
+/micro/det/buildup 3 um
+/micro/det/zone 2 um
+/micro/det/exit 1 um
+/micro/det/halfWidth 5 um
+
+/run/initialize
+
+# --- Primary (/gun/ position and direction are set by the code) ---
+/micro/source/mode gun
+/gun/particle proton
+/gun/energy 10 MeV
+
+# --- Site and scoring ---
+/micro/score/siteDiameter 1 um
+/micro/score/samples 200
+/micro/score/pointSpacing 10 nm
+/micro/score/yMin 0.001
+/micro/score/yMax 10000
+/micro/score/binsPerDecade 50
+/micro/score/y0 150
+/micro/output/prefix output/proton_10MeV
+
+/run/printProgress 1000
+/run/beamOn 10000

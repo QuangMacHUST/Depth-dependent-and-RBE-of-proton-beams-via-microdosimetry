@@ -1,0 +1,38 @@
+# Pristine Bragg peak: single proton energy in a water phantom
+#   ./protonDepth -m pristine.mac [-p QGSP_BIC_HP_EMZ] [-t 8]
+
+/control/verbose 1
+/run/verbose 1
+/tracking/verbose 0
+
+# --- Geometry (must be set before /run/initialize) ---
+/rbe/det/material G4_WATER
+/rbe/det/depth 40 cm
+/rbe/det/width 40 cm
+/rbe/det/maxStep 0.5 mm
+
+/run/setCut 0.1 mm
+/run/initialize
+
+# --- Beam (GPS commands exist only after /run/initialize in MT mode) ---
+/gps/particle proton
+/gps/pos/type Beam
+/gps/pos/centre 0 0 -1 cm
+/gps/pos/sigma_x 3 mm
+/gps/pos/sigma_y 3 mm
+/gps/direction 0 0 1
+/gps/ene/type Gauss
+/gps/ene/mono 150 MeV
+/gps/ene/sigma 0.75 MeV
+
+# --- Scoring: 0.5 mm dose/LET bins, 2 mm spectrum bins over 40 cm ---
+/rbe/score/depthBins 800
+/rbe/score/spectrumDepthBins 200
+/rbe/score/eMin 1 keV
+/rbe/score/eMax 1 GeV
+/rbe/score/eBins 180
+/rbe/score/radius 0 cm
+/rbe/output/prefix output/pristine_150MeV
+
+/run/printProgress 10000
+/run/beamOn 100000

@@ -1,0 +1,27 @@
+# Interactive session (./protonDepth without -m)
+/run/initialize
+
+/gps/particle proton
+/gps/pos/type Beam
+/gps/pos/centre 0 0 -1 cm
+/gps/pos/sigma_x 3 mm
+/gps/pos/sigma_y 3 mm
+/gps/direction 0 0 1
+/gps/ene/mono 150 MeV
+
+/vis/open
+/vis/viewer/set/autoRefresh false
+/vis/drawVolume
+/vis/viewer/set/viewpointThetaPhi 90 0 deg
+/vis/viewer/set/style wireframe
+/vis/scene/add/trajectories smooth
+/vis/modeling/trajectories/create/drawByParticleID
+/vis/modeling/trajectories/drawByParticleID-0/set proton blue
+/vis/modeling/trajectories/drawByParticleID-0/set e- red
+/vis/modeling/trajectories/drawByParticleID-0/set gamma green
+/vis/modeling/trajectories/drawByParticleID-0/set neutron yellow
+/vis/scene/endOfEventAction accumulate 20
+/vis/viewer/set/autoRefresh true
+
+/rbe/output/prefix output/vis
+# /run/beamOn 10

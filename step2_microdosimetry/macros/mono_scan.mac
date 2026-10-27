@@ -1,0 +1,21 @@
+# yF / yD of monoenergetic protons versus energy (compare with published
+# Geant4-DNA / TEPC values for a 1 um site)
+#   ./protonMicro -m mono_scan.mac -t 8
+
+/control/verbose 1
+/run/verbose 1
+
+/micro/det/buildup 3 um
+/micro/det/zone 2 um
+/micro/det/exit 1 um
+/micro/det/halfWidth 5 um
+
+/run/initialize
+
+/micro/source/mode gun
+/gun/particle proton
+/micro/score/siteDiameter 1 um
+
+/control/alias N 10000
+/run/printProgress 1000
+/control/foreach mono_one.mac E "0.5 1 2 5 10 20 50 100 200"

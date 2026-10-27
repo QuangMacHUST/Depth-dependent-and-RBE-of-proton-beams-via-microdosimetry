@@ -19,6 +19,11 @@ Tính f(y), d(y), $\bar{y}_F$, $\bar{y}_D$ và $y^*$.
 3. Mô hình sinh học: đưa $y^*$ vào MKM với bộ tham số của dòng tế bào chuẩn (ví dụ HSG hoặc V79: α₀, β, r_d) để tính α(z), β(z), α/β(z), tỷ lệ sống sót và RBE(z) ở một mức sống sót tham chiếu.
 4. Phân tích độ nhạy: khảo sát ảnh hưởng của kích thước vùng nhạy, lựa chọn physics option, ngưỡng năng lượng và đóng góp của hạt thứ cấp nặng.
 
+# Cấu trúc kho
+
+- [`step1_macroscopic/`](step1_macroscopic/README.md): bước 1, mô phỏng vĩ mô (PDD, LET_t/LET_d, phổ fluence theo độ sâu).
+- [`step2_microdosimetry/`](step2_microdosimetry/README.md): bước 2, mô phỏng vi mô Geant4-DNA (f(y), d(y), ȳ_F, ȳ_D, y* theo độ sâu).
+
 # Thành phần Geant4
 
 Ví dụ xuất phát: TestEm12, microyz, spower, range.
