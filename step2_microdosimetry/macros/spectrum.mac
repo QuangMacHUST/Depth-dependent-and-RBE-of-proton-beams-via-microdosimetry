@@ -1,0 +1,30 @@
+# Mixed field at one depth, from the step-1 fluence spectra
+#   ./protonMicro -m spectrum.mac -t 8
+# Adjust spectrumPrefix to where step 1 wrote its output.
+
+/control/verbose 1
+/run/verbose 1
+
+/micro/det/buildup 3 um
+/micro/det/zone 2 um
+/micro/det/exit 1 um
+/micro/det/halfWidth 5 um
+
+/run/initialize
+
+/micro/source/mode spectrum
+/micro/source/spectrumPrefix ../../step1_macroscopic/build/output/pristine_150MeV
+/micro/source/depth 150 mm
+# ion_other is skipped unless represented by one ion, e.g. oxygen recoils:
+# /micro/source/otherIon 8 16
+# Oversample rare species (weights are corrected automatically):
+/micro/source/bias alpha 20
+/micro/source/bias deuteron 5
+/micro/source/bias triton 5
+/micro/source/bias he3 5
+
+/micro/score/siteDiameter 1 um
+/micro/output/prefix output/micro_150MeV_z150mm
+
+/run/printProgress 1000
+/run/beamOn 20000

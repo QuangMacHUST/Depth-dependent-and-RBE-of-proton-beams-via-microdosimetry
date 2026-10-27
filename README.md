@@ -22,6 +22,7 @@ Tính f(y), d(y), $\bar{y}_F$, $\bar{y}_D$ và $y^*$.
 # Cấu trúc kho
 
 - [`step1_macroscopic/`](step1_macroscopic/README.md): bước 1, mô phỏng vĩ mô (PDD, LET_t/LET_d, phổ fluence theo độ sâu).
+- [`step2_microdosimetry/`](step2_microdosimetry/README.md): bước 2, mô phỏng vi mô Geant4-DNA (f(y), d(y), ȳ_F, ȳ_D, y* theo độ sâu).
 
 # Thành phần Geant4
 

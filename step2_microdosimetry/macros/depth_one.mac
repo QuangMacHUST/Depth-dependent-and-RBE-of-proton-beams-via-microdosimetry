@@ -1,0 +1,4 @@
+# One depth of depth_scan.mac; aliases Z and N come from the caller
+/micro/source/depth {Z} mm
+/micro/output/prefix output/depth_{Z}mm
+/run/beamOn {N}

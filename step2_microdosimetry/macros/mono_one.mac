@@ -1,0 +1,4 @@
+# One energy of mono_scan.mac; aliases E and N come from the caller
+/gun/energy {E} MeV
+/micro/output/prefix output/proton_{E}MeV
+/run/beamOn {N}
